@@ -33,7 +33,7 @@ public class PostController {
 
     @GetMapping("/{id}/detail")
     public PostDetail findDetailById(@PathVariable Integer id) {
-        Post post = posts.findById(id).orElse(null);
+        Post post = posts.findById(id).orElseThrow();
         return new PostDetail(post, authors.findById(post.getAuthor().getId()).orElse(null));
     }
 }
