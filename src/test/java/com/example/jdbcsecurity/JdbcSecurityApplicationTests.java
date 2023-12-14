@@ -28,10 +28,6 @@ class JdbcSecurityApplicationTests {
     private JdbcAggregateTemplate template;
 
 
-    @Test
-    void contextLoads() {
-    }
-
     @ParameterizedTest
     @CsvFileSource(resources = "/testAddPost.csv")
     void testAddPost(String title, String content) {

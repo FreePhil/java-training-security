@@ -12,8 +12,10 @@ public class Event {
 
     private String name;
     private String description;
-    private LocalDateTime startRegistrationDate;
-    private LocalDateTime lastRegistrationDate;
+    private LocalDateTime startRegistrationDateTime;
+    private LocalDateTime endRegistrationDateTime;
+    private LocalDateTime startEventDateTime;
+    private LocalDateTime endEventDateTime;
 
     private Set<Question> survey = new HashSet<>();
 

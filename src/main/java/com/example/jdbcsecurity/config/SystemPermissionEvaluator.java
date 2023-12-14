@@ -17,6 +17,9 @@ public class SystemPermissionEvaluator {
     }
 
     public boolean hasPermission(String permissionTag) {
+
+
+
         Optional<Authentication> authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
         return authentication.map(auth -> {
             var permission = permissionRepository.findOneByUsernameAAndPermissionTag(auth.getName(), permissionTag);
