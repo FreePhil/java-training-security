@@ -1,18 +1,21 @@
 package com.example.jdbcsecurity.model.futurework;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("questions")
 public class Question {
-    private int sequence;
+
+    private @Id Long id;
+    private int row;
     private String description;
     private int type;
-    private List<String> options = new ArrayList<>();
+//    private List<QuestionOption> options = new ArrayList<>();
 
-    public Question(int sequence, String description, int type, List<String> options) throws Exception {
-        this.sequence = sequence;
+    public Question(int row, String description, int type /*, List<QuestionOption> options*/) throws Exception {
+        this.row = row;
         this.description = description;
         this.type = type;
-        this.options = options;
+//        this.options = options;
     }
 }

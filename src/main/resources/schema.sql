@@ -55,3 +55,20 @@ create table if not exists comment
     foreign key (post) references post (id)
 );
 
+create table if not exists events
+(
+    id          int auto_increment primary key,
+    name        text,
+    description text,
+    start_registeration_date_time timestamp
+);
+
+create table if not exists questions
+(
+    id          int aut_increment primary key,
+    row         int,
+    description text,
+    type        int,
+    event_id    int
+)
+
