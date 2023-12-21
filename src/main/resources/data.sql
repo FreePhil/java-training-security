@@ -1,3 +1,14 @@
+delete from comment;
+delete from post;
+delete from author;
+delete from system_permissions;
+delete from authorities;
+delete from users;
+
+delete from events;
+delete from questions;
+
+
 INSERT INTO users (username, password, enabled) VALUES ('admin', '$2a$10$MwVyKkeVBkIIOBw8vSZMRew5JBm1FFOlvUdjtQvo/ulu3e2u/yKFS', 1);
 INSERT INTO users (username, password, enabled) VALUES ('henge', '$2a$10$B877TJYFJa6oiQ9JynVny.94Ekwk5bCFD7vD8wHiaPw/ErmgG5xPS', 1);
 

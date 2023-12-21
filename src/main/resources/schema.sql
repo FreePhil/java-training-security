@@ -12,7 +12,7 @@ create table if not exists authorities
     constraint fk_authorities_users foreign key (username) references users (username)
 );
 
-create unique index ix_auth_username on authorities (username, authority);
+-- create unique index ix_auth_username on authorities (username, authority);
 
 create table if not exists system_permissions
 (
@@ -60,15 +60,15 @@ create table if not exists events
     id          int auto_increment primary key,
     name        text,
     description text,
-    start_registeration_date_time timestamp
+    start_registration_date_time timestamp
 );
 
 create table if not exists questions
 (
-    id          int aut_increment primary key,
-    row         int,
+    id          int auto_increment primary key,
+    row_no      int,
     description text,
     type        int,
     event_id    int
-)
+);
 
