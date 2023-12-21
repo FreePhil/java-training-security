@@ -60,7 +60,11 @@ create table if not exists events
     id          int auto_increment primary key,
     name        text,
     description text,
-    start_registration_date_time timestamp
+    start_registration_date_time timestamp,
+    created_by          varchar(120),
+    created_date        timestamp,
+    last_modified_by    varchar(120),
+    last_modified_date  timestamp
 );
 
 create table if not exists questions

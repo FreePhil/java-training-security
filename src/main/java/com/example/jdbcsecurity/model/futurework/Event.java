@@ -1,6 +1,6 @@
 package com.example.jdbcsecurity.model.futurework;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.*;
 import org.springframework.data.jdbc.core.mapping.AggregateReference;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
@@ -20,6 +20,17 @@ public class Event {
 //    private LocalDateTime endRegistrationDateTime;
 //    private LocalDateTime startEventDateTime;
 //    private LocalDateTime endEventDateTime;
+    @CreatedBy
+    private String createdBy;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedBy
+    private String lastModifiedBy;
+
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
 
     @MappedCollection(idColumn="event_id")
     private Set<Question> survey = new HashSet<>();
@@ -34,9 +45,13 @@ public class Event {
         return id;
     }
 
-//    private Set<AggregateReference<Register, Long>> registers = new HashSet<>();
+    public Set<Question> getSurvey() {
+        return survey;
+    }
 
-    private Event addQuestion(int sequence, String description, int type) throws Exception {
+    //    private Set<AggregateReference<Register, Long>> registers = new HashSet<>();
+
+    public Event addQuestion(int sequence, String description, int type) {
         var question = new Question(sequence, description, type);
         survey.add(question);
 

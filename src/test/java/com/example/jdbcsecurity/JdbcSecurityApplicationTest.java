@@ -17,9 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Configuration
-class JdbcSecurityApplicationTests {
+class JdbcSecurityApplicationTest {
 
-    Logger logger = LoggerFactory.getLogger(JdbcSecurityApplicationTests.class);
+    Logger logger = LoggerFactory.getLogger(JdbcSecurityApplicationTest.class);
 
     @Autowired
     private PostRepository posts;
