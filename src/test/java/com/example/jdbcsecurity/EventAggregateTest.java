@@ -46,6 +46,9 @@ public class EventAggregateTest {
         event.addQuestion(2, "question2", 2);
         events.save(event);
 
+        event.addQuestion(3, "question3", 3);
+        events.save(event);
+
         //act
         Question question = events.findQuestionById(event.getId(), 2).orElse(null);
 

@@ -64,6 +64,8 @@ class JdbcSecurityApplicationTest {
         // act
         posts.save(post);
 
+
+
         // assert
         var newPost = posts.findById(post.getId()).orElseThrow();
         assertThat(newPost.getTitle()).isEqualTo(title);

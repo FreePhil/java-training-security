@@ -20,6 +20,10 @@ public class Event {
 //    private LocalDateTime endRegistrationDateTime;
 //    private LocalDateTime startEventDateTime;
 //    private LocalDateTime endEventDateTime;
+
+    @Version
+    private Long version;
+
     @CreatedBy
     private String createdBy;
 

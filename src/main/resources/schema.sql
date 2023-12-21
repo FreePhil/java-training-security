@@ -61,6 +61,7 @@ create table if not exists events
     name        text,
     description text,
     start_registration_date_time timestamp,
+    version      int,
     created_by          varchar(120),
     created_date        timestamp,
     last_modified_by    varchar(120),
