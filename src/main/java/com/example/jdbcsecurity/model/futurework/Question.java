@@ -1,7 +1,9 @@
 package com.example.jdbcsecurity.model.futurework;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.*;
 import org.springframework.data.relational.core.mapping.Table;
+
+import java.time.LocalDateTime;
 
 @Table("questions")
 public class Question {
@@ -10,6 +12,10 @@ public class Question {
     private int rowNo;
     private String description;
     private int type;
+
+//
+//    @Version
+//    private int version;
 //    private List<QuestionOption> options = new ArrayList<>();
 
     public Question(int rowNo, String description, int type /*, List<QuestionOption> options*/) {

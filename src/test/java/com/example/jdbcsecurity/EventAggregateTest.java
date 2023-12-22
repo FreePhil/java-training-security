@@ -39,7 +39,23 @@ public class EventAggregateTest {
     }
 
     @Test
-    void testRetrieveQuestionFromEvent() {
+    void testFindName() {
+        // arrange
+        Event event = new Event("name1", "description", LocalDateTime.now());
+        event.addQuestion(1, "question1", 1);
+        event.addQuestion(2, "question2", 2);
+
+
+        // act
+        events.save(event);
+
+        // assert
+        var name1Events = events.findByName(event.getName());
+        assertThat(name1Events.size()).isEqualTo(1);
+    }
+
+    @Test
+    void testRetrieveQuestionFromEvent() throws InterruptedException {
         // arrange
         Event event = new Event("name", "description", LocalDateTime.now());
         event.addQuestion(1, "question1", 1);
@@ -49,10 +65,22 @@ public class EventAggregateTest {
         event.addQuestion(3, "question3", 3);
         events.save(event);
 
+//         events.updateQuestion(event.getId(), 3, "question4", 4);
+        Thread.sleep(2000);
+
         //act
-        Question question = events.findQuestionById(event.getId(), 2).orElse(null);
+        event.getSurvey().stream()
+                .filter(question -> question.getRowNo() == 3)
+                .findFirst().ifPresent(question -> {
+                    question.setDescription("question4");
+                    question.setType(4);
+                });
+//        Question question = events.findQuestionById(event.getId(), 2).orElse(null);
+        events.save(event);
 
         //assert
+        var question = events.findQuestionById(event.getId(), 2).orElse(null);
+
         assertThat(question).isNotNull();
         assertThat(question.getRowNo()).isEqualTo(2);
         assertThat(question.getDescription()).isEqualTo("question2");
