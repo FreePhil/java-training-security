@@ -25,29 +25,10 @@ public class EventAggregateTest {
     @Autowired
     private EventRepository events;
 
-
-
-    @Test
-    void testAddEvent() {
-//        // arrange
-//        Event event = new Event("name", "description", LocalDateTime.now());
-//        event.addQuestion(1, "question1", QuestionType.Choice);
-//        event.addQuestion(2, "question2", QuestionType.Text);
-//
-//
-//        // act
-//        events.save(event);
-//
-//        // assert
-//        var persisted = events.findById(event.getId()).orElse(null);
-//        assertThat(persisted).isNotNull();
-//        assertThat(persisted.getSurvey().size()).isEqualTo(2);
-    }
-
     @Test
     void testFindByName() {
         // arrange
-        Event event = new Event("name1", "description", LocalDateTime.now());
+        Event event = new Event("findname1", "description", LocalDateTime.now());
 
         // act
         events.save(event);
@@ -73,23 +54,5 @@ public class EventAggregateTest {
         Event firstEvent = events.findFirstByName("findname2").orElseThrow();
         assertThat(firstEvent.getName()).isEqualTo("findname2");
         assertThat(firstEvent.getDescription()).isEqualTo("finddescription2");
-    }
-
-//    @Test
-//    void testUpdateQuestion() {
-//        // arrange
-//        Event event = new Event("name1", "description", LocalDateTime.now());
-//        event.addQuestion(1, "question1", QuestionType.Text);
-//        event.addQuestion(2, "question2", QuestionType.Choice);
-//        events.save(event);
-//        int updateCount = events.updateQuestion(event.getId(), 2, "QUESTION3" , QuestionType.Text);
-//
-//        // assert
-//        assertThat(updateCount).isEqualTo(1);
-//    }
-
-    @Test
-    void testRetrieveQuestionFromEvent() throws InterruptedException {
-
     }
 }
