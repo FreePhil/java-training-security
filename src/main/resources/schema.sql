@@ -3,16 +3,16 @@ create table if not exists users
     username varchar(50)  not null primary key,
     password varchar(256) not null,
     enabled  boolean      not null
-);
+    );
 
 create table if not exists authorities
 (
     username  varchar(50) not null,
     authority varchar(50) not null,
     constraint fk_authorities_users foreign key (username) references users (username)
-);
+    );
 
-create unique index ix_auth_username on authorities (username, authority);
+-- create unique index ix_auth_username on authorities (username, authority);
 
 create table if not exists system_permissions
 (
@@ -20,7 +20,7 @@ create table if not exists system_permissions
     username       varchar(128) not null,
     permission_tag varchar(128) not null,
     has_permission tinyint(1) default 1 not null
-);
+    );
 
 create table if not exists author
 (
@@ -29,7 +29,7 @@ create table if not exists author
     first_name varchar(255) not null,
     username   varchar(100) not null,
     email      varchar(127) not null
-);
+    );
 
 create table if not exists post
 (
@@ -41,7 +41,7 @@ create table if not exists post
     updated_on   timestamp,
     author       int,
     foreign key (author) references author (id)
-);
+    );
 
 create table if not exists comment
 (
@@ -53,5 +53,32 @@ create table if not exists comment
     updated_on   timestamp,
 
     foreign key (post) references post (id)
-);
+    );
+
+create table if not exists events
+(
+    id          int auto_increment primary key,
+    name        text,
+    description text,
+    start_registration_date_time timestamp,
+    version      int,
+    created_by          varchar(120),
+    created_date        timestamp,
+    last_modified_by    varchar(120),
+    last_modified_date  timestamp
+    );
+
+create table if not exists questions
+(
+    id          int auto_increment primary key,
+    row_no      int,
+    description text,
+    type        varchar(50),
+    event_id    int,
+    version      int,
+    created_by          varchar(120),
+    created_date        timestamp,
+    last_modified_by    varchar(120),
+    last_modified_date  timestamp
+    );
 

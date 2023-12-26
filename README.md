@@ -22,6 +22,14 @@
 
 <hr/>
 
+#### Spring Data JDBC
+* 功能介於 JDBC 與 Spring Data 之間
+    * JDBC: 使用 SQL query, 回傳結果為簡單的 DataRow
+    * Spring Data: 類似 .NET Entity Framework
+    * Spring Data JDBC: 強調簡化 Spring Data, 主要是以 DDD (Domain Driven Desgin) 的需求來設計。
+    * 參考說明: **[Spring Data JDBC](https://docs.spring.io/spring-data/jdbc/docs/3.1.7/reference/html/#repository-query-keywords)**
+
+<hr/>
 #### 執行步驟
 
 * 打閞設定檔: src/main/resources/application-test.properties
@@ -53,20 +61,20 @@ spring.sql.init.mode=never
 logging.level.com.example.jdbcsecurity=TRACE
 logging.level.org.springframework.jdbc=DEBUG
 ```
-* 測試網站 
+* 測試網站
     * 使用者:
         1. username: admin, password: admin, role: admin
         1. username: henge, password: henge, role: user
     * 可用Url:
-      1. http://localhost:8080/
-      2. http://localhost:8080/admin
-      3. http://localhost:8080/misc
-      4. http://localhost:8080/login
-      5. http://localhost:8080/logout
-      6. http://localhost:8080/api/posts
-      7. http://localhost:8080/api/posts/{1,2}
-      8. http://localhost:8080/api/posts/{1,2}/detail
-        
+        1. http://localhost:8080/
+        2. http://localhost:8080/admin
+        3. http://localhost:8080/misc
+        4. http://localhost:8080/login
+        5. http://localhost:8080/logout
+        6. http://localhost:8080/api/posts
+        7. http://localhost:8080/api/posts/{1,2}
+        8. http://localhost:8080/api/posts/{1,2}/detail
+
 
 * 整合測試
 
