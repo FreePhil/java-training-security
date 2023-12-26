@@ -40,6 +40,10 @@ public class Question {
         this.event = event;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public int getRowNo() {
         return rowNo;
     }

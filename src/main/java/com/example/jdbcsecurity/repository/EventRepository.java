@@ -13,13 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EventRepository extends CrudRepository<Event, Long> {
-
-    @Query("select * from questions where event_id = :event_id and row_no = :rowNo")
-    Optional<Question> findQuestionById(@Param("event_id") Long id, int rowNo);
-
-    @Modifying
-    @Query("update questions set description = :description, type = :type where event_id = :event_id and row_no = :row_no")
-    int updateQuestion(@Param("event_id") Long id, @Param("row_no") int rowNo, @Param("description") String description, @Param("type")int type);
-
     List<Event> findByName(String name);
+    Optional<Event> findFirstByName(String name);
 }

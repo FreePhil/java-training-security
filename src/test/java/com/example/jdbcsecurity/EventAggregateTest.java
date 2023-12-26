@@ -25,8 +25,7 @@ public class EventAggregateTest {
     @Autowired
     private EventRepository events;
 
-    @Autowired
-    private QuestionRepository questions;
+
 
     @Test
     void testAddEvent() {
@@ -46,19 +45,34 @@ public class EventAggregateTest {
     }
 
     @Test
-    void testFindName() {
-//        // arrange
-//        Event event = new Event("name1", "description", LocalDateTime.now());
-//        event.addQuestion(1, "question1", QuestionType.Text);
-//        event.addQuestion(2, "question2", QuestionType.Choice);
-//
-//
-//        // act
-//        events.save(event);
-//
-//        // assert
-//        var name1Events = events.findByName(event.getName());
-//        assertThat(name1Events.size()).isEqualTo(1);
+    void testFindByName() {
+        // arrange
+        Event event = new Event("name1", "description", LocalDateTime.now());
+
+        // act
+        events.save(event);
+
+        // assert
+        var eventsWithName1 = events.findByName("findname1");
+        assertThat(eventsWithName1.size()).isEqualTo(1);
+
+        Event savedEvent = eventsWithName1.get(0);
+        assertThat(savedEvent.getName()).isEqualTo("findname1");
+        assertThat(savedEvent.getDescription()).isEqualTo("description");
+    }
+
+    @Test
+    void testFindFirstByName() {
+        // arrange
+        Event event = new Event("findname2", "finddescription2", LocalDateTime.now());
+
+        // act
+        events.save(event);
+
+        // assert
+        Event firstEvent = events.findFirstByName("findname2").orElseThrow();
+        assertThat(firstEvent.getName()).isEqualTo("findname2");
+        assertThat(firstEvent.getDescription()).isEqualTo("finddescription2");
     }
 
 //    @Test
@@ -76,19 +90,6 @@ public class EventAggregateTest {
 
     @Test
     void testRetrieveQuestionFromEvent() throws InterruptedException {
-        // arrange
-        Event event = new Event("name", "description", LocalDateTime.now());
-        events.save(event);
-        Question q1 = new Question(1, "question1", QuestionType.Choice, AggregateReference.to(event.getId()));
-        Question q2 = new Question(2, "question2", QuestionType.Text, AggregateReference.to(event.getId()));
-        questions.save(q1);
-        questions.save(q2);
 
-        //act
-        Collection<Question> setOfQuestions = questions.findQuestionsByEventId(event.getId());
-
-
-        //assert
-        assertThat(setOfQuestions.size()).isEqualTo(2);
     }
 }

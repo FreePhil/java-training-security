@@ -17,23 +17,10 @@ public class SystemPermissionEvaluator {
     }
 
     public boolean hasPermission(String permissionTag) {
-
-
-
         Optional<Authentication> authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
         return authentication.map(auth -> {
             var permission = permissionRepository.findOneByUsernameAAndPermissionTag(auth.getName(), permissionTag);
             return permission.map(p -> p.getHasPermission()).orElse(false);
         }).orElse(false);
-
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication != null) {
-//            var username = authentication.getName();
-//            var permission = permissionRepository.findOneByUsernameAAndPermissionTag(username, permissionTag);
-//            if (permission.isPresent()) {
-//                return permission.get().getHasPermission();
-//            }
-//        }
-//        return false;
     }
 }

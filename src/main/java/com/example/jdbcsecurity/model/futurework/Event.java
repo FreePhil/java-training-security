@@ -12,29 +12,16 @@ import java.util.Set;
 @Table("events")
 public class Event {
 
-    private @Id Long id;
+    @Id private Long id;
     private String name;
     private String description;
-//    private String location;
     private LocalDateTime startRegistrationDateTime;
-//    private LocalDateTime endRegistrationDateTime;
-//    private LocalDateTime startEventDateTime;
-//    private LocalDateTime endEventDateTime;
 
-    @Version
-    private Long version;
-
-    @CreatedBy
-    private String createdBy;
-
-    @CreatedDate
-    private LocalDateTime createdDate;
-
-    @LastModifiedBy
-    private String lastModifiedBy;
-
-    @LastModifiedDate
-    private LocalDateTime lastModifiedDate;
+    @Version private Long version;
+    @CreatedBy private String createdBy;
+    @CreatedDate private LocalDateTime createdDate;
+    @LastModifiedBy private String lastModifiedBy;
+    @LastModifiedDate private LocalDateTime lastModifiedDate;
 
     public Event(String name, String description, LocalDateTime startRegistrationDateTime) {
         this.name = name;
@@ -50,6 +37,11 @@ public class Event {
         return name;
     }
 
-    //    private Set<AggregateReference<Register, Long>> registers = new HashSet<>();
+    public String getDescription() {
+        return description;
+    }
 
+    public LocalDateTime getStartRegistrationDateTime() {
+        return startRegistrationDateTime;
+    }
 }
