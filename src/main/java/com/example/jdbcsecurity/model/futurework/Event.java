@@ -36,9 +36,6 @@ public class Event {
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
 
-    @MappedCollection(idColumn="event_id")
-    private Set<Question> survey = new HashSet<>();
-
     public Event(String name, String description, LocalDateTime startRegistrationDateTime) {
         this.name = name;
         this.description = description;
@@ -53,16 +50,6 @@ public class Event {
         return name;
     }
 
-    public Set<Question> getSurvey() {
-        return survey;
-    }
-
     //    private Set<AggregateReference<Register, Long>> registers = new HashSet<>();
 
-    public Event addQuestion(int sequence, String description, int type) {
-        var question = new Question(sequence, description, type);
-        survey.add(question);
-
-        return this;
-    }
 }

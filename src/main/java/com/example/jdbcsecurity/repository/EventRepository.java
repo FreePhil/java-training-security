@@ -19,7 +19,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 
     @Modifying
     @Query("update questions set description = :description, type = :type where event_id = :event_id and row_no = :row_no")
-    void updateQuestion(@Param("event_id") Long id, @Param("row_no") int rowNo, @Param("description") String description, @Param("type")int type);
+    int updateQuestion(@Param("event_id") Long id, @Param("row_no") int rowNo, @Param("description") String description, @Param("type")int type);
 
     List<Event> findByName(String name);
 }

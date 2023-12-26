@@ -22,6 +22,14 @@
 
 <hr/>
 
+#### Spring Data JDBC
+* 功能介於 JDBC 與 Spring Data 之間
+  * JDBC: 使用 SQL query, 回傳結果為簡單的 DataRow
+  * Spring Data: 類似 .NET Entity Framework
+  * Spring Data JDBC: 強調簡化 Spring Data, 主要是以 DDD (Domain Driven Desgin) 的需求來設計。
+  * 參考說明: **[Spring Data JDBC](https://docs.spring.io/spring-data/jdbc/docs/3.1.7/reference/html/#repository-query-keywords)**
+
+<hr/>
 #### 執行步驟
 
 * 打閞設定檔: src/main/resources/application-test.properties

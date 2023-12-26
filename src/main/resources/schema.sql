@@ -73,7 +73,12 @@ create table if not exists questions
     id          int auto_increment primary key,
     row_no      int,
     description text,
-    type        int,
-    event_id    int
+    type        varchar(50),
+    event_id    int,
+    version      int,
+    created_by          varchar(120),
+    created_date        timestamp,
+    last_modified_by    varchar(120),
+    last_modified_date  timestamp
 );
 
