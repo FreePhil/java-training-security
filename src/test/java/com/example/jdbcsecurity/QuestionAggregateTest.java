@@ -14,8 +14,10 @@ import org.springframework.data.jdbc.core.mapping.AggregateReference;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.springframework.data.jdbc.core.mapping.AggregateReference.to;
 
 @SpringBootTest
 public class QuestionAggregateTest {
@@ -58,6 +60,25 @@ public class QuestionAggregateTest {
         assertThat(q2).isNotNull();
         assertThat(q2.getType()).isEqualTo(QuestionType.Text);
     }
+
+    @Test
+    public void testVersionedQuestion() {
+        // arrange
+        AggregateReference<Event, Long> eventId = AggregateReference.to(1L);
+        Question q1 = new Question(1, "question1", QuestionType.Choice, eventId);
+        questions.save(q1);     // version = 0 for newly created
+
+        q1.setDescription("updated description");
+        questions.save(q1);     // version = 1 for updated
+
+        // act
+        List<Question> oldQuestions = questions.findUpdatedQuestionByEventId(eventId);
+
+        // assert
+        assertThat(oldQuestions.size()).isEqualTo(1);
+        assertThat(oldQuestions.get(0).getDescription()).isEqualTo("updated description");
+    }
+
 
     @Test
     public void testAddQuestions() {

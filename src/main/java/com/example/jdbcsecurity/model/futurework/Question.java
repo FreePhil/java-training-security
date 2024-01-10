@@ -32,6 +32,9 @@ public class Question {
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
 
+    public Question() {}
+
+    @PersistenceCreator
     public Question(int rowNo, String description, QuestionType type, AggregateReference<Event, Long> event) {
         this.event = event;
         this.rowNo = rowNo;

@@ -7,5 +7,5 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
 
-public interface QuestionRepository extends CrudRepository<Question, Long> {
+public interface QuestionRepository extends CrudRepository<Question, Long>, VersionedQuestionRepository {
 }
