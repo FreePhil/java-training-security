@@ -75,6 +75,7 @@ public class SecurityConfig {
 //                .headers(header -> header.frameOptions(customizer -> customizer.sameOrigin()))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/web/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults())
