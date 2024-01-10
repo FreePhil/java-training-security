@@ -22,6 +22,13 @@
 
 <hr/>
 
+#### Web Page
+* /web 內的 WebPage 沒有權限管控, 方便測試 WebPage
+  * /web/hello 範例頁
+  * controller 位於 src/main/java/com.exmple.../controller/WebHomeController
+  * view page 位於 src/main/resources/templates/index.html
+<hr/>
+
 #### Spring Data JDBC
 * 功能介於 JDBC 與 Spring Data 之間
     * JDBC: 使用 SQL query, 回傳結果為簡單的 DataRow
@@ -30,6 +37,7 @@
     * 參考說明: **[Spring Data JDBC](https://docs.spring.io/spring-data/jdbc/docs/3.1.7/reference/html/#repository-query-keywords)**
 
 <hr/>
+
 #### 執行步驟
 
 * 打閞設定檔: src/main/resources/application-test.properties
